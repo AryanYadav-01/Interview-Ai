@@ -8,8 +8,8 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
   origin: [
-    "http://localhost:5173",              // local dev
-    "https://your-frontend.vercel.app"    // production
+    "http://localhost:5173",
+    "https://interview-ai-nine-mu.vercel.app"
   ],
   credentials: true
 }));
