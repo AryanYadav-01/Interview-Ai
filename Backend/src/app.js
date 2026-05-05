@@ -9,10 +9,14 @@ app.use(cookieParser())
 app.use(cors({
   origin: [
     "http://localhost:5173",
-    "https://interview-mp4lnvsvs-ay630147-gmailcoms-projects.vercel.app"
+    "https://interview-ai-nine-mu.vercel.app"
   ],
-  credentials: true
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
 }));
+app.options("*", cors());
+
 /* require all the routes here */
 const authRouter = require("./routes/auth.routes")
 const interviewRouter = require("./routes/interview.routes")
