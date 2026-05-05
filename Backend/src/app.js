@@ -9,7 +9,7 @@ app.use(cookieParser())
 app.use(cors({
   origin: [
     "http://localhost:5173",
-    "https://interview-ai-nine-mu.vercel.app"
+    "https://interview-mp4lnvsvs-ay630147-gmailcoms-projects.vercel.app"
   ],
   credentials: true
 }));
