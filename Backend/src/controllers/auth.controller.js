@@ -45,7 +45,8 @@ async function registerUserController(req, res) {
     res.cookie("token", token, {
         httpOnly: true,
         secure: true,
-        sameSite: "None"
+        sameSite: "None",
+        domain :".preplens.online"
     })
 
     res.status(201).json({
@@ -93,7 +94,8 @@ async function loginUserController(req, res) {
     res.cookie("token", token, {
         httpOnly: true,
         secure: true,
-        sameSite: "None"
+        sameSite: "None",
+        domain : ".preplens.online"
     })
 
     res.status(200).json({
@@ -122,7 +124,8 @@ async function logoutUserController(req, res) {
     res.clearCookie("token", {
         httpOnly: true,
         secure: true,
-        sameSite: "None"
+        sameSite: "None",
+        domain :".preplens.online"
     })
 
     res.status(200).json({
