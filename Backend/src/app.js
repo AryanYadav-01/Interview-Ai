@@ -19,7 +19,7 @@ const corsOptions = {
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors(corsOptions))
-app.options("*", cors(corsOptions))   // fixed — was passing cors() without config
+app.options("/(.*)", cors(corsOptions))   // fixed — was passing cors() without config
 
 /* require all the routes here */
 const authRouter = require("./routes/auth.routes")
