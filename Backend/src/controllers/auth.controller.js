@@ -42,14 +42,11 @@ async function registerUserController(req, res) {
         { expiresIn: "1d" }
     )
 
-const isProduction = process.env.NODE_ENV === "production";
-
-res.cookie("token", token, {
-  httpOnly: true,
-  secure: isProduction,
-  sameSite: isProduction ? "None" : "Lax"
-});
-
+    res.cookie("token", token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "None"
+    })
 
     res.status(201).json({
         message: "User registered successfully",
@@ -59,7 +56,6 @@ res.cookie("token", token, {
             email: user.email
         }
     })
-
 }
 
 
@@ -94,13 +90,12 @@ async function loginUserController(req, res) {
         { expiresIn: "1d" }
     )
 
-const isProduction = process.env.NODE_ENV === "production";
+    res.cookie("token", token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "None"
+    })
 
-res.cookie("token", token, {
-  httpOnly: true,
-  secure: isProduction,
-  sameSite: isProduction ? "None" : "Lax"
-});
     res.status(200).json({
         message: "User loggedIn successfully.",
         user: {
@@ -124,13 +119,11 @@ async function logoutUserController(req, res) {
         await tokenBlacklistModel.create({ token })
     }
 
-  const isProduction = process.env.NODE_ENV === "production";
-
-res.clearCookie("token", {
-  httpOnly: true,
-  secure: isProduction,
-  sameSite: isProduction ? "None" : "Lax",
-});
+    res.clearCookie("token", {
+        httpOnly: true,
+        secure: true,
+        sameSite: "None"
+    })
 
     res.status(200).json({
         message: "User logged out successfully"
@@ -146,8 +139,6 @@ async function getMeController(req, res) {
 
     const user = await userModel.findById(req.user.id)
 
-
-
     res.status(200).json({
         message: "User details fetched successfully",
         user: {
@@ -156,7 +147,6 @@ async function getMeController(req, res) {
             email: user.email
         }
     })
-
 }
 
 
