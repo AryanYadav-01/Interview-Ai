@@ -19,6 +19,10 @@ const corsOptions = {
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors(corsOptions))
+
+app.get('/health', (req, res) => 
+{ res.status(200).json({ status: 'ok', timestamp: Date.now() }); });
+
 // removed app.options line completely
 
 const authRouter = require("./routes/auth.routes")
